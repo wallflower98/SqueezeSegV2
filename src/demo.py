@@ -1,4 +1,4 @@
-# Author: Bichen Wu (bichen@berkeley.edu) 03/07/2017
+
 
 """Evaluation"""
 
@@ -13,7 +13,6 @@ import time
 import glob    
 
 import numpy as np
-from six.moves import xrange
 import tensorflow as tf
 from PIL import Image
 

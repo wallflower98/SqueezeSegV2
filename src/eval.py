@@ -12,7 +12,6 @@ import sys
 import time
 
 import numpy as np
-from six.moves import xrange
 import tensorflow as tf
 
 from config import *
@@ -78,7 +77,7 @@ def eval_once(
     ofn_sum = np.zeros(mc.NUM_CLASS)
     ofp_sum = np.zeros(mc.NUM_CLASS)
 
-    for i in xrange(int(num_images/mc.BATCH_SIZE)):
+    for i in range(int(num_images/mc.BATCH_SIZE)):
       offset = max((i+1)*mc.BATCH_SIZE - num_images, 0)
       
       _t['read'].tic()

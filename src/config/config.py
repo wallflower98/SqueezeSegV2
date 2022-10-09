@@ -1,4 +1,3 @@
-# Author: Xuanyu Zhou (xuanyu_zhou@berkeley.edu), Bichen Wu (bichen@berkeley.edu) 10/27/2018
 
 """Base Model configurations"""
 

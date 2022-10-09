@@ -13,7 +13,6 @@ import time
 
 import math
 import numpy as np
-from six.moves import xrange
 import tensorflow as tf
 import threading
 
@@ -26,7 +25,7 @@ FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('dataset', 'KITTI',
                            """Currently only support KITTI dataset.""")
-tf.app.flags.DEFINE_string('data_path', '', """Root directory of data""")
+tf.app.flags.DEFINE_string('data_path', './data/', """Root directory of data""")
 tf.app.flags.DEFINE_string('image_set', 'train',
                            """ Can be train, trainval, val, or test""")
 tf.app.flags.DEFINE_string('train_dir', '/tmp/bichen/logs/squeezeseg/train',
@@ -128,7 +127,7 @@ def train():
     run_options = tf.RunOptions(timeout_in_ms=60000)
 
     try:
-      for step in xrange(FLAGS.max_steps):
+      for step in range(FLAGS.max_steps):
         start_time = time.time()
 
         if step % FLAGS.summary_step == 0 or step == FLAGS.max_steps-1:
@@ -204,7 +203,7 @@ def train():
         if step % FLAGS.checkpoint_step == 0 or step == FLAGS.max_steps-1:
           checkpoint_path = os.path.join(FLAGS.train_dir, 'model.ckpt')
           saver.save(sess, checkpoint_path, global_step=step)
-    except Exception, e:
+    except Exception as e:
       coord.request_stop(e)
     finally:
       coord.request_stop()
